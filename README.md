@@ -1,9 +1,6 @@
 # AZURE_criar_DB
-### Laboratório - Criação de uma instânica gerenciada de Banco de Dados SQL no Microsoft Azure
-
 ### Objetivo
-
-Praticar a criação e configuração de uma instância de Banco de Dados no **Microsoft Azure**, além de reunir resumos, anotações e dicas úteis como material de apoio para estudos e futuras implementações.
+#### Laboratório - Criação de um Banco de Dados SQL no Microsoft Azure
 
 ___
 
