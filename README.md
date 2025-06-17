@@ -9,32 +9,53 @@ ___
 
 ### Passo a Passo - Criação do Banco de Dados SQL no Azure
 
-#### Criar uma **Instância Gerenciada de SQL** no Azure
+1. Acesse o [Portal Azure](https://portal.azure.com/).
 
-1. Acesse o [Portal Azure](https://portal.azure.com/)
-2. No menu esquerdo, clique em **"SQL do Azure"**  
-   ➝ Se não aparecer, vá em **"Todos os serviços"** e pesquise por **"SQL do Azure"**.
-3. Clique em **"+ Criar"**.
-4. Na página **"Selecionar opção de implantação do SQL"**, no bloco **"Instâncias gerenciadas de SQL"**, clique em **"Mostrar detalhes"** se quiser saber mais.
-5. Em **"Tipo de Banco de Dados"**, selecione **"Instância única"** e clique em **"Criar"**.
-6. Preencha os dados solicitados:
-   - Assinatura
-   - Grupo de recursos (existente ou novo)
-   - Nome da instância
-   - Região
-   - Login e senha de administrador
-7. Configure rede, segurança, backups e outros parâmetros conforme necessário.
-8. Clique em **"Revisar + criar"** e depois em **"Criar"** para iniciar a implantação.
+2. No menu, vá em **"Criar um recurso" > "SQL" > "Banco de Dados SQL"** e clique em **"Criar"**.
+
+3. Na guia **Básico**, preencha:
+
+   * **Assinatura:** selecione sua conta.
+   * **Grupo de recursos:** clique em **"Criar"**, digite `myResourceGroup` e confirme.
+   * **Nome do banco:** `mySampleDatabase`.
+   * **Servidor:** clique em **"Criar"** . Vai abrir uma nova página.
+     * Preencha:
+        * **Nome do servidor:** algo como `my-sql-server-1` (nome deverá ser único).
+        * **Localização:** escolha a mais próxima (ex.: "(South America) Brazil South").
+        * **Autenticação:** selecione **"Usar autenticação somentre do Microsoft Entra"**.
+        * **Definir administrador do MS Entra:** Clique em "Definir administrador" e escolha o seu usuário do Azure e clique em "Selecionar".
+   * Irá voltar para a página do Banco de Dados.
+
+4. **Pool elástico:** mantenha como **Não**.
+
+5. **Ambiente de carga de trabalho:** selecione **Desenvolvimento**, o que vai definir automaticamente:
+   * **Computação: uso geral sem servidor**, 1 vCore, 32 GB.
+   * **Redundância do armazenamento de Backup** com **redundância local** (menor custo).
+
+6. Em **Computação + armazenamento**, clique em **"Configurar banco de dados"**, mantenha:
+
+   * **Uso Geral (Mais amigável ao orçamento)** → **"Aplicar"**.
+
+7. Na opção **Redundância de armazenamento de backup**, mantenha "com redundânica local".
+
+8. Clique em **Avançar: Rede >** e configure:
+
+   * **Método de conectividade:** **Ponto de extremidade público**.
+   * **Permitir que serviços do Azure acessem este servidor:** **Não**.
+   * **Adicionar IP do cliente atual:** **Sim**.
+   * **Política de conexão:** mantenha **Padrão**.
+   * **Versão mínima do TLS:** mantenha em **TLS 1.2**.
+
+9. Clique em **Avançar: Segurança >**:
+
+   * (Opcional) Ative o **Microsoft Defender para SQL** e configure identidades ou criptografia, se desejar.
+
+10. Clique em **Avançar: Configurações adicionais >**:
+
+    * Em **Fonte de dados**, selecione **Amostra** (carrega o banco de exemplo **AdventureWorksLT** com dados e tabelas).
+
+11. Clique em **Revisar + criar** para revisar as configurações.
+
+12. Se estiver tudo correto, clique em **Criar** e aguarde o provisionamento.
 
 ---
-
-#### Criar um **Banco de Dados** na Instância Gerenciada
-
-1. Acesse sua **Instância Gerenciada de SQL** no portal.
-2. Na aba **"Visão Geral"**, clique em **"+ Novo banco de dados"**.
-3. Na aba **"Básico"**, informe o **nome do banco de dados**.
-4. Na aba **"Fonte de dados"**, escolha:
-   - **"Nenhuma"** para criar um banco vazio, ou
-   - Restaurar a partir de um backup existente.
-5. Defina configurações adicionais nas demais abas (como desempenho, segurança e backups).
-6. Clique em **"Revisar + criar"** e, em seguida, em **"Criar"** para finalizar.
