@@ -1,6 +1,6 @@
 # AZURE Criar Database via Portal
 ### Objetivo
-#### Laboratório - Criação de um Banco de Dados SQL no Microsoft Azure
+#### Laboratório - Criação de um Banco de Dados SQL no Microsoft Azure, a partir do Portal
 
 ___
 
